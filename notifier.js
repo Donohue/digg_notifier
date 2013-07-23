@@ -42,19 +42,20 @@ function updateFavicon(favicon) {
         createAndSetFavicon(favicon);
     }
 
-    console.log(favicon.img.complete);
     if (favicon.img.complete)
         createAndSetFavicon(favicon);
 }
 
 function updateNumUnread(n) {
     if (notifications && n == 0) {
+        notifications = n;
         clearTimeout();
         document.title = title
         updateFavicon(favicon)
         activeVisible = false;
     }
     else if (!notifications && n) {
+        notifications = n;
         document.title = '(' + n + ') ' + title
         updateFavicon(activeFavicon)
         activeVisible = true;
@@ -63,21 +64,27 @@ function updateNumUnread(n) {
         }
     }
     else if (notifications != n && n > 0) {
+        notifications = n;
         document.title = '(' + n + ') ' + title
     }
-
-    notifications = n;
 }
 
 function startFlashing() {
-    console.log(activeVisible);
     updateFavicon(activeVisible? favicon: activeFavicon)
     activeVisible = !activeVisible;
 
-    if (flashActive)    
+    if (flashActive && notifications)
         setTimeout(function () {
             startFlashing();
         }, 1500)
+    else if (!notifications) {
+        activeVisible = false;
+        updateFavicon(favicon);
+    }
+    else if (!flashActive && notifications) {
+        activeVisible = true;
+        updateFavicon(activeFavicon);
+    }
 }
 
 function flashActiveToggle() {
@@ -88,7 +95,7 @@ function flashActiveToggle() {
         clearTimeout();
         updateFavicon(favicon);
     }
-    else {
+    else if (!flashActive && notifications) {
         clearTimeout();
         updateFavicon(activeFavicon);
     }
