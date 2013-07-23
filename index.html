@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>Digg Notifier</title>
+        <script src="notifier.js"></script>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <style>
+            .main {
+                width:350px;
+                margin-left:auto;
+                margin-right:auto;
+                margin-top:150px;
+            }
+            .logo {
+                display:block;
+                margin-left:auto;
+                margin-right:auto;
+                margin-bottom:10px;
+            }
+            .dropdown {
+                width:50px;
+                margin-top:10px;
+            }
+            .toggle_label {
+                position:relative;
+                top:2px;
+            }
+            .control_table {
+                margin-left:auto;
+                margin-right:auto;
+                border-spacing:20px 0px;
+                border-collapse:separate;
+            }
+            .change_active {
+                margin-left:auto;
+                margin-right:auto;
+                margin-top:15px;
+                width:149px;
+                display:block;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main">
+            <img class="logo" src="digg.png"/>
+            <table class="control_table">
+                <tr>
+                    <td><span class="notification_label">Number of notifications:</span></td>
+                    <td>
+                        <select class="dropdown" onchange="updateNumUnread(parseInt(this.options[this.selectedIndex].value))">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="toggle_label">Toggle Flashing:</span></td>
+                    <td><input type="checkbox" onchange="flashActiveToggle()"/></td>
+                </tr>
+            </table>
+            <div class="btn btn-primary change_active" onclick="changeActiveFavicon(this)">Change Active Favicon</div>
+        </div>
+    </body>
+</html>
