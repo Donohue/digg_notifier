@@ -3,7 +3,7 @@ var title = document.title
 var flashActive = false;
 var activeVisible = false;
 var favicon = {
-    url:'/favicon.ico'
+    url:'favicon.ico'
 }
 var activeFavicon = {
     url:'favicon_red_on_white.ico'
@@ -110,3 +110,4 @@ function changeActiveFavicon(button) {
         updateFavicon(activeFavicon);
 }
 
+updateFavicon(favicon);
