@@ -70,14 +70,15 @@ function updateNumUnread(n) {
 }
 
 function startFlashing() {
-    updateFavicon(activeVisible? favicon: activeFavicon)
-    activeVisible = !activeVisible;
+    if (flashActive && notifications) {
+        updateFavicon(activeVisible? favicon: activeFavicon)
+        activeVisible = !activeVisible;
 
-    if (flashActive && notifications)
         setTimeout(function () {
             startFlashing();
         }, 1500)
-    else if (!notifications) {
+    }
+    else if (!flashActive && !notifications) {
         activeVisible = false;
         updateFavicon(favicon);
     }
