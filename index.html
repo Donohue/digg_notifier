@@ -4,6 +4,11 @@
         <script src="notifier.js"></script>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <style>
+            @font-face {
+                font-family:digg;
+                src:url('digg.ttf');
+            }
+
             .main {
                 width:350px;
                 margin-left:auto;
@@ -15,6 +20,13 @@
                 margin-left:auto;
                 margin-right:auto;
                 margin-bottom:10px;
+            }
+            .notifier {
+                font-family:digg;
+                font-size:20px;
+                margin-top:15px;
+                text-align:center;
+                color:black;
             }
             .dropdown {
                 width:50px;
@@ -42,6 +54,7 @@
     <body>
         <div class="main">
             <img class="logo" src="digg.png"/>
+            <div class="notifier">notifier</div>
             <table class="control_table">
                 <tr>
                     <td><span class="notification_label">Number of notifications:</span></td>
